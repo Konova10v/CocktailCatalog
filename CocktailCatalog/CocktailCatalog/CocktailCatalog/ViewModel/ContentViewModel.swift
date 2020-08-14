@@ -22,15 +22,28 @@ class ContentViewModel: ObservableObject {
         }
     }
     
+    var cocktailRandom: [Cocktail] = [Cocktail]() {
+        willSet {
+            willChange.send()
+        }
+    }
+    
     func getCocktail() {
         cocktailService.getAllCocktail(onSuccess: { (response) in
             self.cocktailList = response
-            print("Response \(response)")
             self.isVisible = true
         }, onFailure: {(message) in
             print("message \(message)")
         })
     }
     
+    func getRandomCocktail() {
+        cocktailService.getRandomCocktail(onSuccess: { (response) in
+            self.cocktailRandom = response
+            self.isVisible = true
+        }, onFailure: {(message) in
+            print("message \(message)")
+        })
+    }
 }
 

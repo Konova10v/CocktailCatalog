@@ -11,7 +11,6 @@ import SwiftUI
 struct CocktailRow: View {
     @State var cocktail: Cocktail
     @Environment(\.imageCache) var cache: ImageCache
-    
     var body: some View {
         
         VStack(spacing: 25) {

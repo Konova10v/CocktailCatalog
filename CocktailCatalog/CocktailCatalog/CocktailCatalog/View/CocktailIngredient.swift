@@ -15,20 +15,12 @@ struct CocktailIngredient: View {
     
     var body: some View {
         GeometryReader { gr in
-            VStack {
+            HStack(spacing: 40) {
                 Text(self.nameIngredient)
                     .foregroundColor(Color.black)
-                
-//                AsyncImage(url: URL(string: self.icon)!,
-//                           placeholder: Text("Loading"),
-//                           configuration: {$0.resizable() }
-//                )
-//                    .frame(width: gr.size.height * 1/4, height: gr.size.height * 1/4)
-//                    .background(Color.red)
-//                    .cornerRadius(30)
-                
+                    .frame(width: 100)
+                Spacer()
                 Text(self.quantity)
-                    .font(.system(size: 24))
                     .foregroundColor(Color.black)
                     .fontWeight(.semibold)
             }
