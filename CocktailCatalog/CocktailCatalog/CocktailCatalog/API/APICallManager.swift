@@ -17,7 +17,7 @@ enum ServerAPI {
     //Все коктейли
     static let all = "/search.php?f=a"
     //Поиск по имени
-    static let searchName = "/search.php?s="
+    static let searchName = "/search.php?s={name}"
     //Поиск по ингридиенту
     static let searchIngredient = "/search.php?i="
     //Случайный коктейль
