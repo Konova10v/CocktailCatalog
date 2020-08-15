@@ -15,13 +15,12 @@ enum ServerAPI {
     
     static var baseURL = "https://www.thecocktaildb.com/api/json/v1/1"
     //Все коктейли
-    static let all = "/search.php?f=a"
-    //Поиск по имени
-    static let searchName = "/search.php?s={name}"
-    //Поиск по ингридиенту
-    static let searchIngredient = "/search.php?i="
+    static let all = "/search.php?f=b"
     //Случайный коктейль
     static let random = "/random.php"
+    //По букве
+    static let leter = "/search.php?f="
+
     
 }
 

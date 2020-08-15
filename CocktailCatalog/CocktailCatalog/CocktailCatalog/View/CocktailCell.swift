@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct RandomCocktail: View {
+struct CocktailCell: View {
     
     @State var cocktail: Cocktail
     @Environment(\.imageCache) var cache: ImageCache
@@ -26,7 +26,8 @@ struct RandomCocktail: View {
                 Text("\(cocktail.drinkName)")
                     .foregroundColor(Color.white)
                     .fontWeight(Font.Weight.heavy)
-                    .font(Font.system(size: 70))
+                    .font(Font.system(size: 60))
+                    .shadow(color: .gray, radius: 10, x: 0, y: 0)
                 
                 Text("\(cocktail.alcoholic)")
                     .foregroundColor(Color.white)
@@ -39,6 +40,6 @@ struct RandomCocktail: View {
 
 struct Search_Previews: PreviewProvider {
     static var previews: some View {
-        RandomCocktail(cocktail: Cocktail.getDefault())
+        CocktailCell(cocktail: Cocktail.getDefault())
     }
 }

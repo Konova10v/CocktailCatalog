@@ -18,12 +18,24 @@ struct CocktailList: View {
         VStack {
             NavBarView()
             
-            ZStack {
+            ZStack() {
                 ScrollView(.vertical, showsIndicators: false) {
-                    ForEach($contentVM.cocktailRandom.wrappedValue, id: \.self) { random in
-                        RandomCocktail(cocktail: random)
-                            .cornerRadius(CGFloat(20))
-                            .padding()
+                    
+                    Text("Random Coctail")
+                    .foregroundColor(Color.black)
+                    .font(.system(size: 22))
+                    .fontWeight(.bold)
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal)
+                    
+                    VStack {
+                        if !contentVM.cocktailRandom.isEmpty {
+                            ForEach($contentVM.cocktailRandom.wrappedValue, id: \.self) { random in
+                                CocktailCell(cocktail: random)
+                                    .cornerRadius(CGFloat(20))
+                                    .padding()
+                            }
+                        }
                     }
                     
                     Text("A")
@@ -31,15 +43,37 @@ struct CocktailList: View {
                         .font(.system(size: 22))
                         .fontWeight(.bold)
                         .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                        .padding(.top)
                         .padding(.horizontal)
                     
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 20) {
-                            ForEach($contentVM.cocktailList.wrappedValue, id: \.self) { random in
-                                RandomCocktail(cocktail: random)
-                                    .cornerRadius(CGFloat(20))
-                                    .padding()
+                        if !contentVM.cocktailList.isEmpty {
+                            HStack(spacing: 20) {
+                                ForEach($contentVM.cocktailList.wrappedValue, id: \.self) { random in
+                                    CocktailCell(cocktail: random)
+                                        .cornerRadius(CGFloat(20))
+                                        .frame(width: 300, height: 300, alignment: .center)
+                                }
+                            }
+                        }
+                    }
+                    .frame(height: 380)
+                    .padding(.horizontal)
+                    
+                    Text("Z")
+                        .foregroundColor(Color.black)
+                        .font(.system(size: 22))
+                        .fontWeight(.bold)
+                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        if !contentVM.cocktailList.isEmpty {
+                            HStack(spacing: 20) {
+                                ForEach($contentVM.cocktailLeter.wrappedValue, id: \.self) { leter in
+                                    CocktailCell(cocktail: leter)
+                                        .cornerRadius(CGFloat(20))
+                                        .frame(width: 300, height: 300, alignment: .center)
+                                }
                             }
                         }
                     }
@@ -51,8 +85,9 @@ struct CocktailList: View {
     }
     
     private func fetch() {
-        contentVM.getCocktail()
         contentVM.getRandomCocktail()
+        contentVM.getCocktailLeter(leter: "a")
+        contentVM.getCocktailLeter(leter: "b")
     }
     
 }

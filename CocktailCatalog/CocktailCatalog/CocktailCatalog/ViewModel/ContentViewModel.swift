@@ -28,13 +28,10 @@ class ContentViewModel: ObservableObject {
         }
     }
     
-    func getCocktail() {
-        cocktailService.getAllCocktail(onSuccess: { (response) in
-            self.cocktailList = response
-            self.isVisible = true
-        }, onFailure: {(message) in
-            print("message \(message)")
-        })
+    var cocktailLeter: [Cocktail] = [Cocktail]() {
+        willSet {
+            willChange.send()
+        }
     }
     
     func getRandomCocktail() {
@@ -44,6 +41,24 @@ class ContentViewModel: ObservableObject {
         }, onFailure: {(message) in
             print("message \(message)")
         })
+    }
+    
+    func getCocktailLeter(leter: String) {
+        if leter == "a" {
+            cocktailService.getCoctailLeter(parameters: leter, onSuccess: { (response) in
+                self.cocktailList = response
+                self.isVisible = true
+            }, onFailure: {(message) in
+                print("message \(message)")
+            })
+        } else if  leter == "b" {
+            cocktailService.getCoctailLeter(parameters: leter, onSuccess: { (response) in
+                self.cocktailLeter = response
+                self.isVisible = true
+            }, onFailure: {(message) in
+                print("message \(message)")
+            })
+        }
     }
 }
 

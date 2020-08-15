@@ -11,10 +11,10 @@ import SwiftyJSON
 
 class CocktailService {
     
-    public func getAllCocktail(onSuccess successCallback: ((_ response: [Cocktail]) -> Void)?,
+    public func getRandomCocktail(onSuccess successCallback: ((_ response: [Cocktail]) -> Void)?,
                                onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         
-        let url = apiBaseUrl + ServerAPI.all
+        let url = apiBaseUrl + ServerAPI.random
         
         APICallManager.shared.createRequest(url, method: .get, headers: nil, parameters: nil, onSuccess: { (responseObject: JSON) -> Void in
             var data = [Cocktail]()
@@ -28,10 +28,12 @@ class CocktailService {
         })
     }
     
-    public func getRandomCocktail(onSuccess successCallback: ((_ response: [Cocktail]) -> Void)?,
-                               onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
+    public func getCoctailLeter(parameters: String,
+                                onSuccess successCallback: ((_ response: [Cocktail]) -> Void)?,
+                                onFailure failureCallback: ((_ errorMessage: String) -> Void)?) {
         
-        let url = apiBaseUrl + ServerAPI.random
+        let leter: String = parameters
+        let url = ServerAPI.baseURL + ServerAPI.leter + leter
         
         APICallManager.shared.createRequest(url, method: .get, headers: nil, parameters: nil, onSuccess: { (responseObject: JSON) -> Void in
             var data = [Cocktail]()
