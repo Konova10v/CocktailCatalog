@@ -15,7 +15,7 @@ struct CocktailList: View {
     var detailSize = CGSize(width: 0, height: UIScreen.main.bounds.height)
     
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             NavBarView()
             
             ZStack() {
@@ -38,17 +38,17 @@ struct CocktailList: View {
                         }
                     }
                     
-                    Text("A")
-                        .foregroundColor(Color.black)
-                        .font(.system(size: 22))
-                        .fontWeight(.bold)
-                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal)
+//                    Text("A")
+//                        .foregroundColor(Color.black)
+//                        .font(.system(size: 22))
+//                        .fontWeight(.bold)
+//                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+//                        .padding(.horizontal)
                     
                     ScrollView(.horizontal, showsIndicators: false) {
-                        if !contentVM.cocktailList.isEmpty {
+                        if !contentVM.cocktailLetterA.isEmpty {
                             HStack(spacing: 20) {
-                                ForEach($contentVM.cocktailList.wrappedValue, id: \.self) { random in
+                                ForEach($contentVM.cocktailLetterA.wrappedValue, id: \.self) { random in
                                     CocktailCell(cocktail: random)
                                         .cornerRadius(CGFloat(20))
                                         .frame(width: 300, height: 300, alignment: .center)
@@ -59,17 +59,31 @@ struct CocktailList: View {
                     .frame(height: 380)
                     .padding(.horizontal)
                     
-                    Text("Z")
-                        .foregroundColor(Color.black)
-                        .font(.system(size: 22))
-                        .fontWeight(.bold)
-                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal)
+//                    Text("Z")
+//                        .foregroundColor(Color.black)
+//                        .font(.system(size: 22))
+//                        .fontWeight(.bold)
+//                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+//                        .padding(.horizontal)
                     
                     ScrollView(.horizontal, showsIndicators: false) {
-                        if !contentVM.cocktailList.isEmpty {
+                        if !contentVM.cocktailLetterB.isEmpty {
                             HStack(spacing: 20) {
-                                ForEach($contentVM.cocktailLeter.wrappedValue, id: \.self) { leter in
+                                ForEach($contentVM.cocktailLetterB.wrappedValue, id: \.self) { leter in
+                                    CocktailCell(cocktail: leter)
+                                        .cornerRadius(CGFloat(20))
+                                        .frame(width: 300, height: 300, alignment: .center)
+                                }
+                            }
+                        }
+                    }
+                    .frame(height: 380)
+                    .padding(.horizontal)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        if !contentVM.cocktailLetterC.isEmpty {
+                            HStack(spacing: 20) {
+                                ForEach($contentVM.cocktailLetterC.wrappedValue, id: \.self) { leter in
                                     CocktailCell(cocktail: leter)
                                         .cornerRadius(CGFloat(20))
                                         .frame(width: 300, height: 300, alignment: .center)
@@ -88,6 +102,7 @@ struct CocktailList: View {
         contentVM.getRandomCocktail()
         contentVM.getCocktailLeter(leter: "a")
         contentVM.getCocktailLeter(leter: "b")
+        contentVM.getCocktailLeter(leter: "c")
     }
     
 }

@@ -16,19 +16,25 @@ class ContentViewModel: ObservableObject {
     
     @Published var isVisible: Bool = false
     
-    var cocktailList: [Cocktail] = [Cocktail]() {
-        willSet {
-            willChange.send()
-        }
-    }
-    
     var cocktailRandom: [Cocktail] = [Cocktail]() {
         willSet {
             willChange.send()
         }
     }
     
-    var cocktailLeter: [Cocktail] = [Cocktail]() {
+    var cocktailLetterA: [Cocktail] = [Cocktail]() {
+        willSet {
+            willChange.send()
+        }
+    }
+    
+    var cocktailLetterB: [Cocktail] = [Cocktail]() {
+        willSet {
+            willChange.send()
+        }
+    }
+    
+    var cocktailLetterC: [Cocktail] = [Cocktail]() {
         willSet {
             willChange.send()
         }
@@ -46,19 +52,27 @@ class ContentViewModel: ObservableObject {
     func getCocktailLeter(leter: String) {
         if leter == "a" {
             cocktailService.getCoctailLeter(parameters: leter, onSuccess: { (response) in
-                self.cocktailList = response
+                self.cocktailLetterA = response
                 self.isVisible = true
             }, onFailure: {(message) in
                 print("message \(message)")
             })
-        } else if  leter == "b" {
+        } else if leter == "b" {
             cocktailService.getCoctailLeter(parameters: leter, onSuccess: { (response) in
-                self.cocktailLeter = response
+                self.cocktailLetterB = response
+                self.isVisible = true
+            }, onFailure: {(message) in
+                print("message \(message)")
+            })
+        } else if leter == "c" {
+            cocktailService.getCoctailLeter(parameters: leter, onSuccess: { (response) in
+                self.cocktailLetterC = response
                 self.isVisible = true
             }, onFailure: {(message) in
                 print("message \(message)")
             })
         }
+    
     }
 }
 

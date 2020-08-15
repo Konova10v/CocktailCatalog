@@ -26,7 +26,7 @@ struct CocktailCell: View {
                 Text("\(cocktail.drinkName)")
                     .foregroundColor(Color.white)
                     .fontWeight(Font.Weight.heavy)
-                    .font(Font.system(size: 60))
+                    .font(Font.system(size: 50))
                     .shadow(color: .gray, radius: 10, x: 0, y: 0)
                 
                 Text("\(cocktail.alcoholic)")
