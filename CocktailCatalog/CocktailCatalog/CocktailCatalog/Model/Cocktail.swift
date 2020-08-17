@@ -75,13 +75,9 @@ struct Cocktail: Hashable {
     
     static func getDefault() -> Cocktail {
         let data: [String: Any] = [
-            "id": 6381777272700928,
-            "weather_state_name": "Light Rain",
-            
             "strDrink": "A1",
             "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg",
             "strAlcoholic": "Alcogolic",
-            
             "strInstructions": "Mix and fill up with soda water. Drunk by finns on a sunny day any time of the year and day" ]
         
         return Cocktail(json: data)

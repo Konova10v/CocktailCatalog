@@ -12,12 +12,15 @@ struct NavBarView: View {
     var body: some View {
         HStack {
             Spacer()
-            Text("Cocktail Catalog").font(.title)
+            Text("Cocktail Catalog")
+                .foregroundColor(Color.black)
+                .font(.system(size: 22))
+                .fontWeight(.bold)
+                .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
+                .padding(.horizontal)
             Spacer()
-            Image(systemName: "magnifyingglass")
-                .resizable()
-                .frame(width: 25, height: 25)
-        }.padding()
+        }
+        .padding()
     }
 }
 

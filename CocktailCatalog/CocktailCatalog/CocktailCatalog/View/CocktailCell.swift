@@ -33,9 +33,11 @@ struct CocktailCell: View {
                     .foregroundColor(Color.white)
                     .font(.title)
                     .padding(.vertical)
+                    .shadow(color: .gray, radius: 10, x: 0, y: 0)
             }
         }
     }
+    
 }
 
 struct Search_Previews: PreviewProvider {

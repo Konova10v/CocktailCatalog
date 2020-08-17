@@ -14,8 +14,6 @@ import SwiftyJSON
 enum ServerAPI {
     
     static var baseURL = "https://www.thecocktaildb.com/api/json/v1/1"
-    //Все коктейли
-    static let all = "/search.php?f=b"
     //Случайный коктейль
     static let random = "/random.php"
     //По букве
@@ -49,6 +47,5 @@ class APICallManager {
             }
         }
     }
-    
 }
 
