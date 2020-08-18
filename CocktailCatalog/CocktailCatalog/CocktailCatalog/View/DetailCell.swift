@@ -26,7 +26,7 @@ struct DetailCell: View {
                 getImage(key: key)
             }
         }
-        .frame(width: 150, height: 500)
+        .frame(width: 150, height: 250)
         .padding(.horizontal)
     }
     

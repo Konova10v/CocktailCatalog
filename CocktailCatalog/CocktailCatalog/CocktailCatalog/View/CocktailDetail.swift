@@ -34,6 +34,7 @@ struct DetailView: View {
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         self.getIngredients()
+                        self.getMeasurement()
                     }
                     .frame(height: 350)
                     .padding(.horizontal)
@@ -46,13 +47,27 @@ struct DetailView: View {
     func getIngredients() -> some View {
         let ingredients: [String] = [cocktail.ingredient1, cocktail.ingredient2, cocktail.ingredient3, cocktail.ingredient4, cocktail.ingredient5, cocktail.ingredient6, cocktail.ingredient7, cocktail.ingredient8, cocktail.ingredient9, cocktail.ingredient10]
         
-        let measurement: [String] = [cocktail.measurement1, cocktail.measurement2, cocktail.measurement3, cocktail.measurement4, cocktail.measurement5, cocktail.measurement6, cocktail.measurement7, cocktail.measurement8, cocktail.measurement9, cocktail.measurement10]
         self.detailVM.getIngredients(ingredients: ingredients)
+        
+        return HStack() {
+            ForEach((self.$detailVM.ingredients.wrappedValue), id: \.self) { key in
+                DetailCell.init(key: key, detailVM: DetailViewModel())
+            }
+        }
+    }
+    
+    func getMeasurement() -> some View {
+        let measurement: [String] = [cocktail.measurement1, cocktail.measurement2, cocktail.measurement3, cocktail.measurement4, cocktail.measurement5, cocktail.measurement6, cocktail.measurement7, cocktail.measurement8, cocktail.measurement9, cocktail.measurement10]
         self.detailVM.getMeasuremens(measurement: measurement)
         
         return HStack() {
-            ForEach(self.$detailVM.ingredients.wrappedValue, id: \.self) { key in
-                DetailCell.init(key: key, detailVM: DetailViewModel())
+            ForEach(self.$detailVM.measurements.wrappedValue, id: \.self) { key in
+                Text("\(key)")
+                    .foregroundColor(Color.white)
+                    .fontWeight(Font.Weight.heavy)
+                    .font(Font.system(size: 15))
+                    .frame(width: 150, height: 50)
+                    .padding(.horizontal)
             }
         }
     }

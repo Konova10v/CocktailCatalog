@@ -32,4 +32,11 @@ class DetailViewModel: ObservableObject {
             }
         }
     }
+    
+    func getIngredientsMeasuremens(ingredients: [String], measurement: [String]) {
+        
+        zip([0,2,4,6], [1,3,5,7]).forEach {
+            print($0,$1)
+        }
+    }
 }

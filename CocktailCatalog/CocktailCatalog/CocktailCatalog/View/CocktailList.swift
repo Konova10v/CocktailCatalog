@@ -27,6 +27,7 @@ struct CocktailList: View {
                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
                     
+                    
                     VStack {
                         if !contentVM.cocktailRandom.isEmpty {
                             ForEach($contentVM.cocktailRandom.wrappedValue, id: \.drinkName) { random in
@@ -553,7 +554,6 @@ struct CocktailList: View {
             contentVM.getCocktailLeter(leter: item)
         }
     }
-    
 }
 
 struct CocktailList_Previews: PreviewProvider {
