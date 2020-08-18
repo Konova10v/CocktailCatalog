@@ -10,14 +10,13 @@ import Foundation
 import Combine
 
 class DetailViewModel: ObservableObject {
-    var ingredientsURL: [String : String] = [String : String]()
+    var ingredients: [String] = [String]()
     var measurements: [String] = [String]()
     
     func getIngredients(ingredients: [String]) {
         for item in ingredients {
             if item != "<null>" {
-                let newString = item.replacingOccurrences(of: " ", with: "%20", options: .literal, range: nil)
-                ingredientsURL.updateValue(newString, forKey: item)
+                self.ingredients.append(item)
             } else {
                 break
             }

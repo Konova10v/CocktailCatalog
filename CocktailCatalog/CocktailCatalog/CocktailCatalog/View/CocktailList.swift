@@ -11,6 +11,7 @@ import SwiftUI
 struct CocktailList: View {
     @ObservedObject var contentVM: ContentViewModel
     @State private var showDatail = false
+    @State var cocktail: Cocktail = Cocktail.getDefault()
     
     var body: some View {
         VStack(alignment: .center) {
@@ -31,10 +32,10 @@ struct CocktailList: View {
                             ForEach($contentVM.cocktailRandom.wrappedValue, id: \.drinkName) { random in
                                 CocktailCell(cocktail: random).onTapGesture {
                                     self.showDatail.toggle()
+                                    self.cocktail = random
                                 }
-                                    
                                     .sheet(isPresented: self.$showDatail, content: {
-                                        DetailView(detailVM: DetailViewModel(), cocktail: random, showDetails: self.$showDatail)
+                                        DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
                                     })
                                     .cornerRadius(CGFloat(20))
                                     .padding()
@@ -47,8 +48,14 @@ struct CocktailList: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             if !contentVM.cocktailLetterA.isEmpty {
                                 HStack(spacing: 20) {
-                                    ForEach($contentVM.cocktailLetterA.wrappedValue, id: \.self) { random in
-                                        CocktailCell(cocktail: random)
+                                    ForEach($contentVM.cocktailLetterA.wrappedValue, id: \.drinkName) { random in
+                                        CocktailCell(cocktail: random).onTapGesture {
+                                            self.showDatail.toggle()
+                                            self.cocktail = random
+                                        }
+                                            .sheet(isPresented: self.$showDatail, content: {
+                                                DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                            })
                                             .cornerRadius(CGFloat(20))
                                             .frame(width: 300, height: 300, alignment: .center)
                                     }
@@ -62,7 +69,13 @@ struct CocktailList: View {
                             if !contentVM.cocktailLetterB.isEmpty {
                                 HStack(spacing: 20) {
                                     ForEach($contentVM.cocktailLetterB.wrappedValue, id: \.self) { random in
-                                        CocktailCell(cocktail: random)
+                                        CocktailCell(cocktail: random).onTapGesture {
+                                            self.showDatail.toggle()
+                                            self.cocktail = random
+                                        }
+                                            .sheet(isPresented: self.$showDatail, content: {
+                                                DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                            })
                                             .cornerRadius(CGFloat(20))
                                             .frame(width: 300, height: 300, alignment: .center)
                                     }
@@ -77,7 +90,13 @@ struct CocktailList: View {
                                   if !contentVM.cocktailLetterC.isEmpty {
                                       HStack(spacing: 20) {
                                           ForEach($contentVM.cocktailLetterC.wrappedValue, id: \.self) { random in
-                                              CocktailCell(cocktail: random)
+                                              CocktailCell(cocktail: random).onTapGesture {
+                                                  self.showDatail.toggle()
+                                                  self.cocktail = random
+                                              }
+                                                  .sheet(isPresented: self.$showDatail, content: {
+                                                      DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                                  })
                                                   .cornerRadius(CGFloat(20))
                                                   .frame(width: 300, height: 300, alignment: .center)
                                           }
@@ -92,7 +111,13 @@ struct CocktailList: View {
                                   if !contentVM.cocktailLetterD.isEmpty {
                                       HStack(spacing: 20) {
                                           ForEach($contentVM.cocktailLetterD.wrappedValue, id: \.self) { random in
-                                              CocktailCell(cocktail: random)
+                                              CocktailCell(cocktail: random).onTapGesture {
+                                                  self.showDatail.toggle()
+                                                  self.cocktail = random
+                                              }
+                                                  .sheet(isPresented: self.$showDatail, content: {
+                                                      DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                                  })
                                                   .cornerRadius(CGFloat(20))
                                                   .frame(width: 300, height: 300, alignment: .center)
                                           }
@@ -107,7 +132,13 @@ struct CocktailList: View {
                             if !contentVM.cocktailLetterE.isEmpty {
                                 HStack(spacing: 20) {
                                     ForEach($contentVM.cocktailLetterE.wrappedValue, id: \.self) { random in
-                                        CocktailCell(cocktail: random)
+                                        CocktailCell(cocktail: random).onTapGesture {
+                                            self.showDatail.toggle()
+                                            self.cocktail = random
+                                        }
+                                            .sheet(isPresented: self.$showDatail, content: {
+                                                DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                            })
                                             .cornerRadius(CGFloat(20))
                                             .frame(width: 300, height: 300, alignment: .center)
                                     }
@@ -122,7 +153,13 @@ struct CocktailList: View {
                             if !contentVM.cocktailLetterF.isEmpty {
                                 HStack(spacing: 20) {
                                     ForEach($contentVM.cocktailLetterF.wrappedValue, id: \.self) { random in
-                                        CocktailCell(cocktail: random)
+                                        CocktailCell(cocktail: random).onTapGesture {
+                                            self.showDatail.toggle()
+                                            self.cocktail = random
+                                        }
+                                            .sheet(isPresented: self.$showDatail, content: {
+                                                DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                            })
                                             .cornerRadius(CGFloat(20))
                                             .frame(width: 300, height: 300, alignment: .center)
                                     }
@@ -137,7 +174,13 @@ struct CocktailList: View {
                             if !contentVM.cocktailLetterG.isEmpty {
                                 HStack(spacing: 20) {
                                     ForEach($contentVM.cocktailLetterG.wrappedValue, id: \.self) { random in
-                                        CocktailCell(cocktail: random)
+                                        CocktailCell(cocktail: random).onTapGesture {
+                                            self.showDatail.toggle()
+                                            self.cocktail = random
+                                        }
+                                            .sheet(isPresented: self.$showDatail, content: {
+                                                DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                            })
                                             .cornerRadius(CGFloat(20))
                                             .frame(width: 300, height: 300, alignment: .center)
                                     }
@@ -152,7 +195,13 @@ struct CocktailList: View {
                             if !contentVM.cocktailLetterH.isEmpty {
                                 HStack(spacing: 20) {
                                     ForEach($contentVM.cocktailLetterH.wrappedValue, id: \.self) { random in
-                                        CocktailCell(cocktail: random)
+                                        CocktailCell(cocktail: random).onTapGesture {
+                                            self.showDatail.toggle()
+                                            self.cocktail = random
+                                        }
+                                            .sheet(isPresented: self.$showDatail, content: {
+                                                DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                            })
                                             .cornerRadius(CGFloat(20))
                                             .frame(width: 300, height: 300, alignment: .center)
                                     }
@@ -167,7 +216,13 @@ struct CocktailList: View {
                             if !contentVM.cocktailLetterI.isEmpty {
                                 HStack(spacing: 20) {
                                     ForEach($contentVM.cocktailLetterI.wrappedValue, id: \.self) { random in
-                                        CocktailCell(cocktail: random)
+                                        CocktailCell(cocktail: random).onTapGesture {
+                                            self.showDatail.toggle()
+                                            self.cocktail = random
+                                        }
+                                            .sheet(isPresented: self.$showDatail, content: {
+                                                DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                            })
                                             .cornerRadius(CGFloat(20))
                                             .frame(width: 300, height: 300, alignment: .center)
                                     }
@@ -182,7 +237,13 @@ struct CocktailList: View {
                             if !contentVM.cocktailLetterJ.isEmpty {
                                 HStack(spacing: 20) {
                                     ForEach($contentVM.cocktailLetterJ.wrappedValue, id: \.self) { random in
-                                        CocktailCell(cocktail: random)
+                                        CocktailCell(cocktail: random).onTapGesture {
+                                            self.showDatail.toggle()
+                                            self.cocktail = random
+                                        }
+                                            .sheet(isPresented: self.$showDatail, content: {
+                                                DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                            })
                                             .cornerRadius(CGFloat(20))
                                             .frame(width: 300, height: 300, alignment: .center)
                                     }
@@ -199,7 +260,13 @@ struct CocktailList: View {
                             if !contentVM.cocktailLetterK.isEmpty {
                                 HStack(spacing: 20) {
                                     ForEach($contentVM.cocktailLetterK.wrappedValue, id: \.self) { random in
-                                        CocktailCell(cocktail: random)
+                                        CocktailCell(cocktail: random).onTapGesture {
+                                            self.showDatail.toggle()
+                                            self.cocktail = random
+                                        }
+                                            .sheet(isPresented: self.$showDatail, content: {
+                                                DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                            })
                                             .cornerRadius(CGFloat(20))
                                             .frame(width: 300, height: 300, alignment: .center)
                                     }
@@ -214,7 +281,13 @@ struct CocktailList: View {
                             if !contentVM.cocktailLetterL.isEmpty {
                                 HStack(spacing: 20) {
                                     ForEach($contentVM.cocktailLetterL.wrappedValue, id: \.self) { random in
-                                        CocktailCell(cocktail: random)
+                                        CocktailCell(cocktail: random).onTapGesture {
+                                            self.showDatail.toggle()
+                                            self.cocktail = random
+                                        }
+                                            .sheet(isPresented: self.$showDatail, content: {
+                                                DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                            })
                                             .cornerRadius(CGFloat(20))
                                             .frame(width: 300, height: 300, alignment: .center)
                                     }
@@ -229,7 +302,13 @@ struct CocktailList: View {
                             if !contentVM.cocktailLetterM.isEmpty {
                                 HStack(spacing: 20) {
                                     ForEach($contentVM.cocktailLetterM.wrappedValue, id: \.self) { random in
-                                        CocktailCell(cocktail: random)
+                                        CocktailCell(cocktail: random).onTapGesture {
+                                            self.showDatail.toggle()
+                                            self.cocktail = random
+                                        }
+                                            .sheet(isPresented: self.$showDatail, content: {
+                                                DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                            })
                                             .cornerRadius(CGFloat(20))
                                             .frame(width: 300, height: 300, alignment: .center)
                                     }
@@ -244,7 +323,13 @@ struct CocktailList: View {
                             if !contentVM.cocktailLetterN.isEmpty {
                                 HStack(spacing: 20) {
                                     ForEach($contentVM.cocktailLetterN.wrappedValue, id: \.self) { random in
-                                        CocktailCell(cocktail: random)
+                                        CocktailCell(cocktail: random).onTapGesture {
+                                            self.showDatail.toggle()
+                                            self.cocktail = random
+                                        }
+                                            .sheet(isPresented: self.$showDatail, content: {
+                                                DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                            })
                                             .cornerRadius(CGFloat(20))
                                             .frame(width: 300, height: 300, alignment: .center)
                                     }
@@ -259,7 +344,13 @@ struct CocktailList: View {
                             if !contentVM.cocktailLetterO.isEmpty {
                                 HStack(spacing: 20) {
                                     ForEach($contentVM.cocktailLetterO.wrappedValue, id: \.self) { random in
-                                        CocktailCell(cocktail: random)
+                                        CocktailCell(cocktail: random).onTapGesture {
+                                            self.showDatail.toggle()
+                                            self.cocktail = random
+                                        }
+                                            .sheet(isPresented: self.$showDatail, content: {
+                                                DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                            })
                                             .cornerRadius(CGFloat(20))
                                             .frame(width: 300, height: 300, alignment: .center)
                                     }
@@ -275,6 +366,13 @@ struct CocktailList: View {
                                 HStack(spacing: 20) {
                                     ForEach($contentVM.cocktailLetterP.wrappedValue, id: \.self) { random in
                                         CocktailCell(cocktail: random)
+                                            .onTapGesture {
+                                                self.showDatail.toggle()
+                                                self.cocktail = random
+                                            }
+                                                .sheet(isPresented: self.$showDatail, content: {
+                                                    DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                                })
                                             .cornerRadius(CGFloat(20))
                                             .frame(width: 300, height: 300, alignment: .center)
                                     }
@@ -291,6 +389,13 @@ struct CocktailList: View {
                                 HStack(spacing: 20) {
                                     ForEach($contentVM.cocktailLetterR.wrappedValue, id: \.self) { random in
                                         CocktailCell(cocktail: random)
+                                            .onTapGesture {
+                                                self.showDatail.toggle()
+                                                self.cocktail = random
+                                            }
+                                                .sheet(isPresented: self.$showDatail, content: {
+                                                    DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                                })
                                             .cornerRadius(CGFloat(20))
                                             .frame(width: 300, height: 300, alignment: .center)
                                     }
@@ -306,6 +411,13 @@ struct CocktailList: View {
                                 HStack(spacing: 20) {
                                     ForEach($contentVM.cocktailLetterS.wrappedValue, id: \.self) { random in
                                         CocktailCell(cocktail: random)
+                                            .onTapGesture {
+                                                self.showDatail.toggle()
+                                                self.cocktail = random
+                                            }
+                                                .sheet(isPresented: self.$showDatail, content: {
+                                                    DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                                })
                                             .cornerRadius(CGFloat(20))
                                             .frame(width: 300, height: 300, alignment: .center)
                                     }
@@ -321,6 +433,13 @@ struct CocktailList: View {
                                 HStack(spacing: 20) {
                                     ForEach($contentVM.cocktailLetterT.wrappedValue, id: \.self) { random in
                                         CocktailCell(cocktail: random)
+                                            .onTapGesture {
+                                                self.showDatail.toggle()
+                                                self.cocktail = random
+                                            }
+                                                .sheet(isPresented: self.$showDatail, content: {
+                                                    DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                                })
                                             .cornerRadius(CGFloat(20))
                                             .frame(width: 300, height: 300, alignment: .center)
                                     }
@@ -338,6 +457,13 @@ struct CocktailList: View {
                                 HStack(spacing: 20) {
                                     ForEach($contentVM.cocktailLetterV.wrappedValue, id: \.self) { random in
                                         CocktailCell(cocktail: random)
+                                            .onTapGesture {
+                                                self.showDatail.toggle()
+                                                self.cocktail = random
+                                            }
+                                                .sheet(isPresented: self.$showDatail, content: {
+                                                    DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                                })
                                             .cornerRadius(CGFloat(20))
                                             .frame(width: 300, height: 300, alignment: .center)
                                     }
@@ -353,6 +479,13 @@ struct CocktailList: View {
                                 HStack(spacing: 20) {
                                     ForEach($contentVM.cocktailLetterW.wrappedValue, id: \.self) { random in
                                         CocktailCell(cocktail: random)
+                                            .onTapGesture {
+                                                self.showDatail.toggle()
+                                                self.cocktail = random
+                                            }
+                                                .sheet(isPresented: self.$showDatail, content: {
+                                                    DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                                })
                                             .cornerRadius(CGFloat(20))
                                             .frame(width: 300, height: 300, alignment: .center)
                                     }
@@ -368,6 +501,13 @@ struct CocktailList: View {
                                 HStack(spacing: 20) {
                                     ForEach($contentVM.cocktailLetterY.wrappedValue, id: \.self) { random in
                                         CocktailCell(cocktail: random)
+                                            .onTapGesture {
+                                                self.showDatail.toggle()
+                                                self.cocktail = random
+                                            }
+                                                .sheet(isPresented: self.$showDatail, content: {
+                                                    DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                                })
                                             .cornerRadius(CGFloat(20))
                                             .frame(width: 300, height: 300, alignment: .center)
                                     }
@@ -383,6 +523,13 @@ struct CocktailList: View {
                                 HStack(spacing: 20) {
                                     ForEach($contentVM.cocktailLetterZ.wrappedValue, id: \.self) { random in
                                         CocktailCell(cocktail: random)
+                                            .onTapGesture {
+                                                self.showDatail.toggle()
+                                                self.cocktail = random
+                                            }
+                                                .sheet(isPresented: self.$showDatail, content: {
+                                                    DetailView(detailVM: DetailViewModel(), cocktail: self.cocktail, showDetails: self.$showDatail)
+                                                })
                                             .cornerRadius(CGFloat(20))
                                             .frame(width: 300, height: 300, alignment: .center)
                                     }
@@ -405,8 +552,6 @@ struct CocktailList: View {
         for item in alphabet {
             contentVM.getCocktailLeter(leter: item)
         }
-        
-        
     }
     
 }

@@ -45,16 +45,14 @@ struct DetailView: View {
     
     func getIngredients() -> some View {
         let ingredients: [String] = [cocktail.ingredient1, cocktail.ingredient2, cocktail.ingredient3, cocktail.ingredient4, cocktail.ingredient5, cocktail.ingredient6, cocktail.ingredient7, cocktail.ingredient8, cocktail.ingredient9, cocktail.ingredient10]
-        self.detailVM.getIngredients(ingredients: ingredients)
         
         let measurement: [String] = [cocktail.measurement1, cocktail.measurement2, cocktail.measurement3, cocktail.measurement4, cocktail.measurement5, cocktail.measurement6, cocktail.measurement7, cocktail.measurement8, cocktail.measurement9, cocktail.measurement10]
+        self.detailVM.getIngredients(ingredients: ingredients)
         self.detailVM.getMeasuremens(measurement: measurement)
         
         return HStack() {
-            ForEach(self.$detailVM.ingredientsURL.wrappedValue.keys.sorted(), id: \.self) { key in
-                ForEach(self.$detailVM.measurements.wrappedValue, id: \.self) { measurement in
-                    DetailCell.init(key: key, value: self.detailVM.ingredientsURL[key]!, measurement: measurement)
-                    }
+            ForEach(self.$detailVM.ingredients.wrappedValue, id: \.self) { key in
+                DetailCell.init(key: key, detailVM: DetailViewModel())
             }
         }
     }
